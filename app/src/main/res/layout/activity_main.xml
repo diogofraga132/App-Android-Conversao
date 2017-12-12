@@ -24,14 +24,14 @@
         android:gravity="center_horizontal">
 
         <EditText
-            android:id="@+id/tvValorParaConverter"
-            android:hint="Milhas"
+            android:id="@+id/etValorParaConverter"
             android:layout_weight="1"
-            android:textColor="#000000"
-            android:padding="10dp"
             android:gravity="center"
+            android:hint="Milhas"
             android:inputType="numberDecimal"
-            android:textSize="15dp"/>
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/btnConverter"
@@ -89,13 +89,13 @@
 
         <EditText
             android:id="@+id/etValorDollarParaConverter"
-            android:hint="Dólar"
             android:layout_weight="1"
-            android:textColor="#000000"
-            android:padding="10dp"
             android:gravity="center"
+            android:hint="Dólar"
             android:inputType="numberDecimal"
-            android:textSize="15dp"/>
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/btnConverterMoedas"
@@ -158,10 +158,10 @@
             android:layout_weight="1"
             android:gravity="center"
             android:hint="Ângulo"
+            android:inputType="numberDecimal"
             android:padding="10dp"
-            android:inputType="number"
             android:textColor="#000000"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/btnCalcularTangente"
@@ -171,7 +171,7 @@
             android:padding="10dp"
             android:text="CALCULA"
             android:textColor="#000000"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
     </TableRow>
 
     <TableRow>

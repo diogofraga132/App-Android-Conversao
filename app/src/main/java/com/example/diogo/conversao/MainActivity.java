@@ -6,12 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button converterMedidas;
     TextView resultEmKM;
     TextView resultEmPES;
-    EditText tvValorParaConverter;
+    EditText etValorParaConverter;
     ConversaoDeMedidas conversaoDeMedidas = new ConversaoDeMedidas();
 
 
@@ -34,15 +35,21 @@ public class MainActivity extends AppCompatActivity {
         converterMedidas= (Button) findViewById(R.id.btnConverter);
         resultEmKM=(TextView) findViewById(R.id.resultKM);
         resultEmPES=(TextView) findViewById(R.id.resultPES);
-        tvValorParaConverter= (EditText) findViewById(R.id.tvValorParaConverter);
+        etValorParaConverter= (EditText) findViewById(R.id.etValorParaConverter);
 
         converterMedidas.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                double valorConverter = Double.parseDouble(tvValorParaConverter.getText().toString());
-                double resultado =conversaoDeMedidas.converterParaKm(valorConverter);
-                resultEmKM.setText("KM: ".concat(String.valueOf(resultado)));
-                resultado=conversaoDeMedidas.converterParaPes(valorConverter);
-                resultEmPES.setText("Pés: ".concat(String.valueOf(resultado)));
+
+
+                if(etValorParaConverter.getText().length() == 0){
+                    Toast.makeText(MainActivity.this, "Campo vazio !", Toast.LENGTH_SHORT).show();
+                }else{
+                    double valorConverter = Double.parseDouble(etValorParaConverter.getText().toString());
+                    double resultado =conversaoDeMedidas.converterParaKm(valorConverter);
+                    resultEmKM.setText("KM: ".concat(String.valueOf(resultado)));
+                    resultado=conversaoDeMedidas.converterParaPes(valorConverter);
+                    resultEmPES.setText("Pés: ".concat(String.valueOf(resultado)));
+                }
             }
         });
 
@@ -54,11 +61,15 @@ public class MainActivity extends AppCompatActivity {
 
         btnConverterMoedas.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                double valorConverter = Double.parseDouble(etValorDollarParaConverter.getText().toString());
-                double resultado =conversaoDeMoedas.converterParaReais(valorConverter);
-                resultEmReais.setText("Reais: ".concat(String.valueOf(resultado)));
-                resultado=conversaoDeMoedas.converterParaEuros(valorConverter);
-                resultEmEuros.setText("Euros: ".concat(String.valueOf(resultado)));
+                if(etValorDollarParaConverter.getText().length()==0){
+                    Toast.makeText(MainActivity.this, "Campo vazio !", Toast.LENGTH_SHORT).show();
+                }else{
+                    double valorConverter = Double.parseDouble(etValorDollarParaConverter.getText().toString());
+                    double resultado =conversaoDeMoedas.converterParaReais(valorConverter);
+                    resultEmReais.setText("Reais: ".concat(String.valueOf(resultado)));
+                    resultado=conversaoDeMoedas.converterParaEuros(valorConverter);
+                    resultEmEuros.setText("Euros: ".concat(String.valueOf(resultado)));
+                }
             }
         });
 
@@ -70,9 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
         btnCalcularTangente.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                double anguloCalcular = Double.parseDouble(angulo.getText().toString());
-                double resultado = calcularTangente.calcular(anguloCalcular);
-                resultTangente.setText("Tangente: ".concat(String.valueOf(resultado)));
+                if(angulo.getText().length() == 0){
+                    Toast.makeText(MainActivity.this, "Campo vazio !", Toast.LENGTH_SHORT).show();
+                }else{
+                    double anguloCalcular = Double.parseDouble(angulo.getText().toString());
+                    double resultado = calcularTangente.calcular(anguloCalcular);
+                    resultTangente.setText("Tangente: ".concat(String.valueOf(resultado)));
+                }
             }
         });
     }
